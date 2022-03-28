@@ -5,16 +5,17 @@ import (
 )
 
 type ServiceContainer struct {
-	FeedService *newsfeed.NewsFeedService
+	newsFeedService newsfeed.INewsFeedService
 }
 
 func (s *ServiceContainer) NewsFeedService() newsfeed.INewsFeedService {
-	return s.FeedService
+	return s.newsFeedService
 }
 
 func New() *ServiceContainer {
 	newsFeedService := newsfeed.NewNewsFeedService()
+
 	return &ServiceContainer{
-		FeedService: newsFeedService,
+		newsFeedService,
 	}
 }
